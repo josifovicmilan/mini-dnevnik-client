@@ -1,6 +1,15 @@
 <template>
   <nav class="">
-     
+      <div >
+          <nuxt-link to="/admin/classrooms" class="bg-gray-700 flex py-2 px-4">
+              <span class="text-gray-100 ml-2"> 
+                  <svg class="h-6 w-6 stroke-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+            </span>
+            <span class="text-gray-100 ml-2">Размени одељења</span>
+          </nuxt-link>
+      </div>
       <div >
           <nuxt-link to="/classrooms" class="bg-gray-700 flex py-2 px-4">
               <span class="text-gray-100 ml-2"> 
@@ -23,11 +32,11 @@
       </nuxt-link>
       </div>
        <div >
-        <nuxt-link to="/profile" class="bg-gray-700 flex py-2 px-4">
-            <div class="m-1 mr-2 w-12 h-12 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
+        <nuxt-link to="/profile" class="bg-gray-700 flex items-center py-2 px-4">
+            <div class="ml-2 w-6 h-6 flex justify-center b items-center rounded-full bg-gray-500 text-xl text-white">
                 <img src="http://source.unsplash.com/100x100/?girl" class="rounded-full">
             </div>
-            <span>Миланче</span>
+            <span class="text-gray-100 ml-2">Миланче</span>
         </nuxt-link>
       </div>
     </nav>
