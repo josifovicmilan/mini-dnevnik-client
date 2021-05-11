@@ -33,8 +33,40 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    ['@nuxtjs/axios'],
+    ['@nuxtjs/auth-next']
   ],
 
+  axios: {
+    //baseURL:'http://localhost:80',
+    debug: process.env.AXIOS_DEBUG_MODE || false,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: true,
+    //proxy: false,
+  },
+  // proxy: {
+  //   '/laravel': {
+  //     target: 'https://laravel-auth.nuxtjs.app',
+  //     //target: 'http://localhost',
+  //     pathRewrite: { '^/laravel': '/' }
+  //   }
+  // },
+  auth: {
+    strategies: {
+      'laravelSanctum': {
+        provider: 'laravel/sanctum',
+        url: 'http://localhost',
+        endpoints:{
+          login:{ url: '/api/users/login', method: 'post',propertyName: "token"},
+          logout:{ url: '/api/users/logout', method: 'post'},
+          user:{ url: '/api/users/info', method: 'get'},
+        }
+      }
+    }
+  },
+  
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }

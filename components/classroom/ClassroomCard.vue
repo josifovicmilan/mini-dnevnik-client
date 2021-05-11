@@ -1,5 +1,5 @@
 <template>
-  <div class="border mt-4 flex flex-col rounded-xl shadow-lg overflow-hidden  sm:w-1/2 md:w-full lg:w-1/2">
+  <div class="border mt-4 flex flex-col rounded-xl shadow-lg overflow-hidden m-2 h-40 lg:w-1/4">
         <div class="h-6 bg-gray-300 "></div>
         <div class="flex flex-col mx-2 my-2">
             <div>

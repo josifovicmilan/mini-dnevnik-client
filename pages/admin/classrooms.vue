@@ -1,15 +1,8 @@
 <template>
   <div class="flex flex-col lg:flex-row lg:flex-wrap ">
-    <div class="flex-shrink-0 w-full bg-gray-400 h-10 flex items-center justify-between">
-        <div>
-            <select name="" id="">
-                <option value="1">I/1</option>  
-                <option value="1">I/2</option>  
-                <option value="1">I/3</option>      
-                <option value="1">I/4</option>  
-            </select>
-        </div>
-        <div>right</div>
+    <div class="flex-shrink-0 w-full bg-gray-400 h-16 flex items-center justify-between ">
+        <app-select></app-select>
+        <app-select></app-select>
     </div>
     <div class="shadow-xl border rounded-xl overflow-hidden text-sm box-border  mx-4  lg:w-1/2 lg:mx-4 lg:flex-1 text-gray-800 my-4 lg:mb-12">
         <div class="bg-yellow-500 grid grid-cols-12 justify-items-center gap-1 px-2 py-1 text-gray-50">
@@ -180,10 +173,13 @@
 
 <script>
 import AppSidebar from "@/components/layout/AppSidebar";
+import AppInput from "@/components/utility/AppInput";
+import AppSelect from "@/components/utility/AppSelect";
 export default {
 
     components:{
-        AppSidebar
+        AppSidebar,
+        AppSelect
     }
 }
 </script>

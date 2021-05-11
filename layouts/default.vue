@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="font-montserrat">
     <app-header @toggleNav="toggleNav"></app-header>
     <app-nav v-show="navVisibility"></app-nav>
     <Nuxt />

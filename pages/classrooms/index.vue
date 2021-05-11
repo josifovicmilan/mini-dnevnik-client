@@ -1,32 +1,61 @@
 <template>
-  <div class="">
-  <div class="page flex flex-col md:flex-row">
+  <app-container>
     <app-sidebar>
-      <app-button :class="'btn-green'" :btnText="'Додај одељење'" :icon="'icon-green'">
+      <app-button 
+        :class="'btn-green flex-shrink-0'" 
+        :btnText="'Додај одељење'" 
+        :icon="'icon-green'"
+        @click.native="popupAddClassroom = !popupAddClassroom"
+        >
         <template #icon>
-          <svg class="h-6 w-6  fill-current bg-white rounded-full stroke-current" className="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor">
-             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-          </svg>
+          
         </template>
       </app-button>
     </app-sidebar>
-    <div class="w-full flex flex-col sm:flex-row px-4 py-4 md:space-y-2 md:flex-col md:w-3/4 lg:flex-row lg:items-baseline ">
-        <classroom-card></classroom-card>
-        <classroom-card></classroom-card>
-    </div>
-    </div>
-  </div>
+    <app-grid>
+      <classroom-card></classroom-card>
+      <classroom-card></classroom-card>
+      <classroom-card></classroom-card>
+    </app-grid>
+    <classroom-popup v-show="popupAddClassroom" @closePopup="popupAddClassroom = false"></classroom-popup>
+    </app-container>
 </template>
 
 <script>
+// variables/variables.js
+
+import AppContainer from "@/components/layout/AppContainer";
 import AppSidebar from "@/components/layout/AppSidebar";
+import AppGrid from "@/components/layout/AppGrid";
+import ClassroomPopup from "@/components/classroom/ClassroomPopup";
 import ClassroomCard from "@/components/classroom/ClassroomCard";
 import AppButton from "@/components/utility/AppButton";
 export default {
+  middleware: 'auth',
+  auth: true,
+  data(){
+    return{
+      popupAddClassroom: false,
+    }
+  },
   components:{
+    AppContainer,
     AppSidebar,
+    AppGrid,
+    ClassroomPopup,
     ClassroomCard,
     AppButton
+  },
+  methods:{
+
+  },
+  async asyncData({store}){
+      store.dispatch('loadClassrooms');
+  },
+  computed:{
+    loadClassrooms(){
+      //return this.$store.
+    }
   },
   
 }

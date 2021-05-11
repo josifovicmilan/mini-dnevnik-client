@@ -1,6 +1,6 @@
 <template>
-  <div class="grid grid-cols-12 md:grid-rows-3 lg:grid-rows-2">
-    <app-sidebar class="col-span-full  h-10 md:col-span-3 md:h-full md:row-span-full lg:col-span-2">
+  <app-container>
+    <app-sidebar >
       <app-button :class="'btn-green'" :btnText="'Додај личне податке'" :icon="'icon-green'">
         <template #icon>
           <svg class="h-6 w-6  fill-current bg-white rounded-full stroke-current" className="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor">
@@ -30,14 +30,20 @@
         </template>
       </app-button>
     </app-sidebar>
-    <student-personal class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3"></student-personal>
-    <student-marks class="col-span-12 sm:col-span-6 md:col-span-5 lg:col-span-7"></student-marks>
-    <student-certificate class="col-span-12 md:col-start-4 md:col-span-9 lg:col-span-6"></student-certificate>
-    <student-final-exam class="col-span-12 md:col-start-4 md:col-span-9 lg:col-span-4"></student-final-exam>
-  </div>
+    <app-grid>
+      <div class="w-full grid">
+        <student-personal class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3"></student-personal>
+        <student-marks class="col-span-12 sm:col-span-6 md:col-span-8 lg:col-start-4 lg:col-span-8"></student-marks>
+        <student-certificate class="col-span-12 md:col-span-8 "></student-certificate>
+        <student-final-exam class="col-span-12 md:col-start-9 md:col-span-4 "></student-final-exam>
+      </div>
+    </app-grid>
+  </app-container>
 </template>
 
 <script>
+import AppContainer from "@/components/layout/AppContainer";
+import AppGrid from "@/components/layout/AppGrid";
 import AppCard from "@/components/layout/AppCard";
 import AppSidebar from "@/components/layout/AppSidebar";
 import AppButton from "@/components/utility/AppButton";
@@ -47,7 +53,9 @@ import StudentCertificate from "@/components/student/StudentCertificate";
 import StudentFinalExam from "@/components/student/StudentFinalExam";
 export default {
   components:{
+    AppContainer,
     AppCard,
+    AppGrid,
     AppSidebar,
     AppButton,
     StudentPersonal,

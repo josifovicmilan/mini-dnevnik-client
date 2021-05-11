@@ -36,7 +36,8 @@
             <div class="ml-2 w-6 h-6 flex justify-center b items-center rounded-full bg-gray-500 text-xl text-white">
                 <img src="http://source.unsplash.com/100x100/?girl" class="rounded-full">
             </div>
-            <span class="text-gray-100 ml-2">Миланче</span>
+
+            <span v-if="$auth.loggedIn" class="text-gray-100 ml-2">{{$auth.user.user.name}}</span>
         </nuxt-link>
       </div>
     </nav>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col  border shadow-xl rounded-xl overflow-hidden w-full">
+  <div class="flex flex-col  border shadow-xl rounded-xl overflow-hidden m-2 h-14">
       <div class="h-4 bg-gray-300 "></div>
       <div class="flex justify-between mx-2 my-1">
         <div class="flex-shrink-0">

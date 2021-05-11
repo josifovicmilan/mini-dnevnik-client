@@ -1,6 +1,5 @@
 <template>
-  <div>
-  <div class="page flex flex-col md:flex-row">
+  <app-container>
     <app-sidebar>
       <app-button :class="'btn-green'" :btnText="'Додај предмет'" :icon="'icon-green'">
         <template #icon>
@@ -10,24 +9,27 @@
         </template>
       </app-button>
     </app-sidebar>
-    <app-container>
+    <app-list>
+      <subject-card ></subject-card>
       <subject-card></subject-card>
       <subject-card></subject-card>
-      <subject-card></subject-card>
-    </app-container>
-    </div>
-  </div>
+    </app-list>
+  </app-container>
 </template>
 
 <script>
-import AppSidebar from "@/components/layout/AppSidebar";
 import AppContainer from "@/components/layout/AppContainer";
+import AppSidebar from "@/components/layout/AppSidebar";
+import AppList from "@/components/layout/AppList";
 import AppButton from "@/components/utility/AppButton";
+import SubjectCard from "@/components/subject/SubjectCard";
 export default {
   components:{
-    AppSidebar,
     AppContainer,
-    AppButton
+    AppSidebar,
+    AppList,
+    AppButton,
+    SubjectCard
   }
 }
 </script>
