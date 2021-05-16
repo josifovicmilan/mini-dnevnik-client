@@ -5,7 +5,7 @@
         :class="'btn-green flex-shrink-0'" 
         :btnText="'Додај одељење'" 
         :icon="'icon-green'"
-        @click.native="popupAddClassroom = !popupAddClassroom"
+        @click.native="popupAddClassroom = true"
         >
         <template #icon>
           
@@ -13,9 +13,7 @@
       </app-button>
     </app-sidebar>
     <app-grid>
-      <classroom-card></classroom-card>
-      <classroom-card></classroom-card>
-      <classroom-card></classroom-card>
+      <classroom-card v-for="classroom in classrooms" :key="classroom.id" :classroom="classroom"></classroom-card>
     </app-grid>
     <classroom-popup v-show="popupAddClassroom" @closePopup="popupAddClassroom = false"></classroom-popup>
     </app-container>
@@ -49,12 +47,12 @@ export default {
   methods:{
 
   },
-  async asyncData({store}){
-      store.dispatch('loadClassrooms');
+  mounted(){
+      return this.$store.dispatch('classroom/loadClassrooms');
   },
   computed:{
-    loadClassrooms(){
-      //return this.$store.
+    classrooms(){
+      return this.$store.getters['classroom/classrooms'];
     }
   },
   

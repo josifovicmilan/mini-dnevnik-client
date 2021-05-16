@@ -1,5 +1,5 @@
 <template>
-  <app-popup>
+  <app-popup @closePopup="$emit('closePopup')">
       <div class="p-2">
                 <label for="">Година уписа</label>
                 <app-input v-model="classroomYear" :type="'input'" :name="'classroomYear'"></app-input>
@@ -46,14 +46,16 @@ export default {
     },
     methods:{
         addClassroom(){
-            console.log(this.classroomType)
-            console.log(this.classroomNumber)
-            console.log(this.classroomYear)
-            // return this.$store.dispatch('classroom/addClassroom',{
-            //     type: this.classroomType,
-            //     year_started: this.classroomYear,
-            //     classroom_number: this.classroomNumber
-            // });
+            return this.$store.dispatch('classroom/addClassroom',{
+                type: this.classroomType,
+                year_started: this.classroomYear,
+                classroom_number: this.classroomNumber
+            }).then(response =>{
+                this.classroomType = '';
+                this.classroomYear = '';
+                this.classroomNumber = '';
+                this.$emit('closePopup');
+            });
         }
     }
 }
