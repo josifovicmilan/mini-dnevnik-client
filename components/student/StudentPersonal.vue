@@ -11,11 +11,11 @@
         </div>
         <div class="flex justify-between items-center">
           <span class="px-2 py-1 text-gray-500">ЈМБГ</span>
-          <span class="px-2 py-1 text-gray-800">1234567891234</span>
+          <span class="px-2 py-1 text-gray-800">{{student.jmbg}}</span>
         </div>
         <div class="flex justify-between items-center">
           <span class="px-2 py-1 text-gray-500">Ime:</span>
-          <span class="px-2 py-1 text-gray-800">Pera Peric</span>
+          <span class="px-2 py-1 text-gray-800">{{ student.first_name}} {{student.last_name}}</span>
         </div>
         <div class="flex justify-between items-center">
           <span class="px-2 py-1 text-gray-500">Datum rodjenja: </span>
@@ -31,7 +31,7 @@
         </div>
         <div class="flex justify-between items-center">
           <span class="px-2 py-1 text-gray-500">Ime roditelja</span>
-          <span class="px-2 py-1 text-gray-800">Perimirika Peric</span>
+          <span class="px-2 py-1 text-gray-800">{{student.fathers_name}}</span>
         </div>
         <div class="flex justify-between items-center">
           <span class="px-2 py-1 text-gray-500"> Ucenik upisan u </span>
@@ -57,10 +57,10 @@
 <script>
 import AppCard from "@/components/layout/AppCard"
 export default {
-
     components:{
         AppCard
-    }
+    },
+    props:['student']
 }
 </script>
 

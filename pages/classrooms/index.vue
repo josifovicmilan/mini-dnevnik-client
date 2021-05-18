@@ -15,7 +15,7 @@
     <app-grid>
       <classroom-card v-for="classroom in classrooms" :key="classroom.id" :classroom="classroom"></classroom-card>
     </app-grid>
-    <classroom-popup v-show="popupAddClassroom" @closePopup="popupAddClassroom = false"></classroom-popup>
+     <classroom-popup v-show="popupAddClassroom" @closePopup="popupAddClassroom = false"></classroom-popup>
     </app-container>
 </template>
 
@@ -29,7 +29,7 @@ import ClassroomPopup from "@/components/classroom/ClassroomPopup";
 import ClassroomCard from "@/components/classroom/ClassroomCard";
 import AppButton from "@/components/utility/AppButton";
 export default {
-  middleware: 'auth',
+  middleware: 'authenticated',
   auth: true,
   data(){
     return{
