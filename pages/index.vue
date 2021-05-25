@@ -13,7 +13,9 @@
         <div class="mx-1 border-2 mt-2 flex justify-end">
            <app-button :class="'btn-green'" :btnText="'Пријави се'" @click.native="attemptLogin"></app-button>
         </div>
-        <div>немате налог? кликни <nuxt-link to="/register">овде</nuxt-link> за нови налог</div>
+        <div class="flex items-center justify-center mt-4">
+          <div class=" text-sm ">Немате налог? кликни <nuxt-link to="/register" class="border-b border-blue-900 pb-1 text-blue-800">овде</nuxt-link> за нови налог.</div>
+        </div>
       </div>
     </div>
   </div>

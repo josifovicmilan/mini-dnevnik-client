@@ -5,13 +5,13 @@
 
 @layer components{
     .btn-green{
-      @apply bg-green-500 focus:bg-green-700;
+      @apply bg-green-500 focus:bg-green-700 text-white;
     }
     .btn-red{
-      @apply bg-red-400 focus:bg-red-500;
+      @apply bg-red-400 focus:bg-red-500 text-white;
     }
     .btn-blue{
-      @apply bg-blue-400 focus:bg-blue-500;
+      @apply bg-blue-400 focus:bg-blue-500 text-white;
     }
 
     .icon-blue{

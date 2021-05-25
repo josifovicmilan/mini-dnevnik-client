@@ -13,7 +13,8 @@
       </app-button>
     </app-sidebar>
     <app-grid>
-      <classroom-card v-for="classroom in classrooms" :key="classroom.id" :classroom="classroom"></classroom-card>
+      <app-spinner v-if="!classrooms"></app-spinner>
+      <classroom-card v-else v-for="classroom in classrooms" :key="classroom.id" :classroom="classroom"></classroom-card>
     </app-grid>
      <classroom-popup v-show="popupAddClassroom" @closePopup="popupAddClassroom = false"></classroom-popup>
     </app-container>
@@ -21,7 +22,7 @@
 
 <script>
 // variables/variables.js
-
+import AppSpinner from "@/components/layout/AppSpinner";
 import AppContainer from "@/components/layout/AppContainer";
 import AppSidebar from "@/components/layout/AppSidebar";
 import AppGrid from "@/components/layout/AppGrid";
@@ -42,7 +43,8 @@ export default {
     AppGrid,
     ClassroomPopup,
     ClassroomCard,
-    AppButton
+    AppButton,
+    AppSpinner
   },
   methods:{
 

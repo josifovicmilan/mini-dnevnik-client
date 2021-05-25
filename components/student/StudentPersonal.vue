@@ -1,6 +1,7 @@
 <template>
   <app-card>
-      <div class="flex flex-col">
+    <app-spinner v-if="!student"></app-spinner>
+      <div v-else class="flex flex-col">
         <div class="flex justify-between items-center">
           <span class="px-2 py-1 text-gray-500">Број: </span>
           <span class="px-2 py-1 text-gray-800">123456</span>
@@ -55,10 +56,12 @@
 </template>
 
 <script>
+import AppSpinner from "@/components/layout/AppSpinner";
 import AppCard from "@/components/layout/AppCard"
 export default {
     components:{
-        AppCard
+        AppCard,
+        AppSpinner
     },
     props:['student']
 }

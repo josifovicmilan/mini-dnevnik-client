@@ -6,7 +6,7 @@
         </div>
      
         <div class="flex items-center justify-end py-3 px-2">
-            <app-button :mode="'btn-blue'" :btn-text="'Додај предмет'" @click.native="addSubject"></app-button>
+            <app-button :mode="'btn-blue'" :btn-text="'Додај предмет'" @click.native="addUserSubject"></app-button>
         </div>
             
   </app-popup>
@@ -20,7 +20,7 @@ import AppButton from "@/components/utility/AppButton";
 export default {
     data(){
         return{
-            subject: null
+            subject: ''
         }
     },
     components:{
@@ -35,12 +35,27 @@ export default {
     },
     computed:{
         allSubjects(){
-            return this.$store.getters['subject/allSubjects'];
+            const subjects = this.$store.getters['subject/allSubjects'].map(subject =>{
+                return {
+                    value: subject.name,
+                    id: subject.id
+                }
+            });
+            return subjects;
+        },
+        selectedSubject(){
+            return this.allSubjects.find(subject => subject.id == this.subject)
         }
     },
     methods:{
-        addSubject(){
-            return this.$store.dispatch('subject/addUserSubject');
+        addUserSubject(){  
+            return this.$store.dispatch('subject/addUserSubject',{
+                subject: this.selectedSubject,
+                classroom_id : this.$route.params.classrooms
+            }).then(()=> {
+                this.subject = '',
+                this.$emit('closePopup');
+            })
         }
     }
 }

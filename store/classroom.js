@@ -1,11 +1,15 @@
 export const state = () => ({
   classrooms : [],
-  students: [],    
+  students: [],   
+  classroom: {}, 
   })
   
 export const mutations = {
   loadClassrooms(state, data){
     state.classrooms = data.data
+  },
+  loadClassroom(state, data){
+    state.classroom = data
   },
   addClassroom(state, data){
     state.classrooms.push(data.data)
@@ -27,6 +31,17 @@ export const mutations = {
 }
   
 export const actions = {
+  async loadClassroom(context, data){
+    try{
+      await this.$axios.$get(`/api/classrooms/${data.classroom_id}`)
+        .then(response => {
+          context.commit('loadClassroom', response)
+        })
+    }
+    catch(e){
+      console.log(e)
+    }
+  },
   async loadClassrooms(context){
     await this.$axios.$get('/api/classrooms').
       then((response) => {
@@ -112,5 +127,15 @@ export const actions = {
 }
 export const getters = {
   classrooms : (state) => state.classrooms,
-  students : (state) => state.students
+  students : (state) => state.students,
+  activeYears(state){
+    const years = [];
+    for(let i=0; i< state.classroom.duration; i++){
+      years.push({
+        id: (state.classroom.year_started + i) + '/' + (state.classroom.year_started + 1 + i).toString().substring(2,4),
+        value: (state.classroom.year_started + i) + '/' + (state.classroom.year_started + 1 + i).toString().substring(2,4),
+      })
+    }
+    return years;
+  }
 }

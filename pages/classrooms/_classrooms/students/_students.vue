@@ -31,7 +31,8 @@
       </app-button>
     </app-sidebar>
     <app-grid>
-      <div class="w-full grid">
+      <app-spinner v-if="!student"></app-spinner>
+      <div v-else class="w-full grid">
         <student-personal :student="student" class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3"></student-personal>
         <student-marks class="col-span-12 sm:col-span-6 md:col-span-8 lg:col-start-4 lg:col-span-8"></student-marks>
         <student-certificate class="col-span-12 md:col-span-8 "></student-certificate>
@@ -50,6 +51,7 @@
 </template>
 
 <script>
+import AppSpinner from "@/components/layout/AppSpinner";
 import AppContainer from "@/components/layout/AppContainer";
 import AppGrid from "@/components/layout/AppGrid";
 import AppCard from "@/components/layout/AppCard";
@@ -62,6 +64,7 @@ import StudentFinalExam from "@/components/student/StudentFinalExam";
 import StudentPersonalPopup from "@/components/student/StudentPersonalPopup";
 import StudentMarksPopup from "@/components/student/StudentMarksPopup";
 export default {
+  middleware:['authenticated'],
   components:{
     AppContainer,
     AppCard,
@@ -73,7 +76,8 @@ export default {
     StudentCertificate,
     StudentFinalExam,
     StudentPersonalPopup,
-    StudentMarksPopup
+    StudentMarksPopup,
+    AppSpinner
   },
   data(){
     return{
@@ -84,15 +88,14 @@ export default {
     }
   },
   mounted(){
-    console.log("student id: " + this.$route.params.students);
+    
     return this.$store.dispatch('student/loadStudent', {
             id: this.$route.params.students
     });
   },
   computed:{
     student(){
-      console.log(this.$store.getters['student/student']);
-      return this.$store.getters['student/student'] ?? {};
+      return this.$store.getters['student/student'] ?? null;
     }
   },
 }

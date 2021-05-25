@@ -1,5 +1,7 @@
 export const state = () => ({
-    student: undefined,    
+    student: {},    
+    marks: {},
+
     })
     
   export const mutations = {
@@ -10,7 +12,6 @@ export const state = () => ({
     
   export const actions = {
     async loadStudent(context, data){
-        console.log(data)
         try{
             await this.$axios.$get(`/api/students/${data.id}`)
                 .then(response => {
@@ -22,6 +23,20 @@ export const state = () => ({
         catch(e){
             console.log(e)
         }
+    },
+    async loadMarks(context){
+        try{
+            await this.$axios.$get(`/api/students/${data.id}/marks`)
+                .then(response =>{
+                    console.log(response)
+                })
+        }
+        catch(e){
+            console.log(e)
+        }
+    },
+    async addStudentMarks(context, data){
+        console.log('data')
     }
   }
   export const getters = {

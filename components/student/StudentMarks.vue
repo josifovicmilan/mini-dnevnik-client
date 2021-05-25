@@ -78,6 +78,16 @@ export default {
 
     components:{
         AppCard
+    },
+    mounted(){
+      return this.$store.dispatch('student/loadMarks',{
+        id: this.$route.params.students
+      })
+    },
+    computed:{
+      marks(){
+        return this.$store.getters['student/marks']
+      }
     }
 }
 </script>
