@@ -9,9 +9,23 @@
       </app-button>
            
     </app-sidebar>
-    <app-list>
+    <app-list > 
+      <div
+         @drop="onDrop($event)"
+        @dragover.prevent 
+        @dragenter.prevent
+        >
+
       <app-spinner v-if="!subjects"></app-spinner>
-      <subject-card v-else v-for="subject in subjects" :key="subject.id" :subject="subject"></subject-card>
+      <subject-card
+         v-else 
+         v-for="subject in subjects"
+         :key="subject.id"
+         :subject="subject"
+         
+         >
+        </subject-card>
+      </div>
     </app-list>
     <subject-popup v-show="popupAddSubject" @closePopup="popupAddSubject = false"></subject-popup>
   </app-container>
@@ -41,12 +55,19 @@ export default {
   data(){
     return{
       popupAddSubject: false,
+      addDropEffect: false
     }
   },
   mounted(){
     return this.$store.dispatch('subject/loadUserSubjects',{
       classroom_id: this.$route.params.classrooms
     });
+  },
+  methods:{
+    onDrop(event){
+      console.log(event.dataTransfer.getData('subject'))
+      
+    },
   },
   computed:{
     subjects(){

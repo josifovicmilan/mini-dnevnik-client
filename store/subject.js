@@ -83,6 +83,14 @@ export const actions = {
         catch(e){
             console.log(e)
         }
+    },
+    async updatePosition(context, data){
+        try{
+            await t
+        }
+        catch(e){
+            console.log(e)
+        }
     }
 }
 export const getters = {

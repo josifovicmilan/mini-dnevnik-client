@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../mini-dnevnik-api"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../zbirka-api"
+		}
+	],
+	"settings": {}
+}
